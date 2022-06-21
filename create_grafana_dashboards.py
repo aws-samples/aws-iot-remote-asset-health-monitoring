@@ -55,12 +55,8 @@ def GetGrafanaWorkspaceInfo(workspace_id):
     workspace_id = workspace_id
     print(get_workspace_info)
     endpoint = get_workspace_info["workspace"]['endpoint']
-    workspace_name = get_workspace_info["workspace"]["name"]
-    if workspace_name == "all_pumping_stations":
-      workspace_info = [workspace_id, endpoint]
-      print("workspace found")
-    else:
-      print("Workspace not found check your grafana workspace")
+    workspace_info = [workspace_id, endpoint]
+    print("workspace found")
     print(workspace_info)
     return(workspace_info)
   
