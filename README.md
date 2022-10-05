@@ -1,6 +1,6 @@
 ## aws-iot-remote-asset-heatlh-monitoring - Re-invent Branch 
 
-### This bracnh was created exclusively to support workshops at re-invent 2022
+### This branch was created exclusively to support workshops at re-invent 2022
 This repository was created to support the AWS IoT blog post Empowering operations: A scalable Remote asset health monitoring solution (link), and host the following files:
 
 * ### bootstrap.sh 
@@ -13,6 +13,8 @@ An AwSIoTPython sdk example file containing a simple PubSub communication model 
 Uses AWS CLI commands to create resources in AWS IoT core, things, policies and certificates.
 * ### create_iotrules.py
 Uses AWS CLI commands to create resources in AWS IoT core, IoT rules,
+* ### create_iotsitewise_models.py
+Uses AWS CLI commands to create resources in AWS IoT SiteWise, asset-models.
 * ### create_iotsitewise_assets.py
 Uses AWS CLI commands to create resources in AWS IoT SiteWise, assets.
 * ### create_grafana_dashboards.py
