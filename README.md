@@ -1,5 +1,6 @@
-## aws-iot-remote-asset-heatlh-monitoring
+## aws-iot-remote-asset-heatlh-monitoring - Re-invent Branch 
 
+### This bracnh was created exclusively to support workshops at re-invent 2022
 This repository was created to support the AWS IoT blog post Empowering operations: A scalable Remote asset health monitoring solution (link), and host the following files:
 
 * ### bootstrap.sh 
