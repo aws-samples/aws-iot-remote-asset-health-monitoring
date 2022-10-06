@@ -13,16 +13,17 @@ An AwSIoTPython sdk example file containing a simple PubSub communication model 
 Uses AWS CLI commands to create resources in AWS IoT core, things, policies and certificates.
 * ### create_iotrules.py
 Uses AWS CLI commands to create resources in AWS IoT core, IoT rules,
-* ### create_iotsitewise_models.py
+* ### create_asset_model.py
 Uses AWS CLI commands to create resources in AWS IoT SiteWise, asset-models.
-* ### create_iotsitewise_assets.py
+* ### create_assets.py
 Uses AWS CLI commands to create resources in AWS IoT SiteWise, assets.
-* ### create_grafana_dashboards.py
-Uses AWS CLI commands to create resources in an Amazon managed grafana workspace.
 * ### datagen 
 Directory with JSON objects used for the simulated dataset 
 * ### iot_rules
 Directory containing an template JSON object used by the create_iotrules.py file
+* ### asset_models
+Directory containing json objects for Asset model creation
+
 
 
 The following files:
