@@ -115,14 +115,53 @@ def CreatepumpingStatioLocationModel(childAssetId):
    
     print (model_info)
     return (assetModelId) 
+
+def CreateOrganizationModel(childAssetId):
+    
+    #Create Json file for input
+    model_json = {
+                    "assetModelName": "Organization",
+                    "assetModelDescription": "The organization / company managing the assets ",
+                    "assetModelProperties": [
+                                                {
+                                                    "name": "OrganizationID",
+                                                    "dataType": "STRING",
+                                                    "type": {
+                                                        "attribute": {
+                                                            "defaultValue":"123456789"
+                                                                     }
+                                                            }
+                                                }
+                                                ],
+                                                "assetModelHierarchies":[
+                                                    {
+                                                        "name": "Location of assets ",
+                                                        "childAssetModelId": f"{childAssetId}"
+                                                    }
+                                                ]
+                }
+    
+    
+    with open(f"{path}/asset_models/organization_model.json", 'w') as outfile:
+        json.dump(model_json, outfile, indent=4 )
+    
+    create_asset_json = sp.getoutput(f"aws iotsitewise create-asset-model \
+    --cli-input-json file://{path}/asset_models/organization_model.json")
+    model_info = json.loads(create_asset_json)
+    assetModelId = model_info["assetModelId"]
+   
+    print (model_info)
+    return (assetModelId) 
  
 pump_model = CreatepumpModel()
 print ("waiting for resource propagation")
-time.sleep(10)
+time.sleep(5)
 pumping_station_model = CreatepumpingStationModel(pump_model)
 print ("waiting for resource propagation")
-time.sleep(10)
+time.sleep(5)
 pumping_station_location_model = CreatepumpingStatioLocationModel(pumping_station_model)
+time.sleep(5)
+organization_model = CreateOrganizationModel
 
 model_assets_id_list = {
                             "pumpmodelid": pump_model,
