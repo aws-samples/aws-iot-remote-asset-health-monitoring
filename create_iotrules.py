@@ -374,7 +374,7 @@ def CreateIoTRuleJSONpumpB(path, station_number, role_arn): #Inputs path and how
 
         
      
-for n in range(1, 6):
+for n in range(1, 4):
     CreateIoTRuleJSONpumpA(path, n, roleArn)
     CreateIoTRuleJSONpumpB(path, n, roleArn)
     

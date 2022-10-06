@@ -45,7 +45,7 @@ def CreatepumpingStationModel(childAssetId):
     
     #Create Json file for input
     model_json = {
-                    "assetModelName": "pumpingStation",
+                    "assetModelName": "PumpingStation",
                     "assetModelDescription": "a model of a pumping station with 2 pumps ",
                     "assetModelProperties": [
                                                 {
@@ -83,7 +83,7 @@ def CreatepumpingStatioLocationModel(childAssetId):
     
     #Create Json file for input
     model_json = {
-                    "assetModelName": "pumpingStationLocation",
+                    "assetModelName": "PumpingStationLocation",
                     "assetModelDescription": "Location of the pumpingStation - State ",
                     "assetModelProperties": [
                                                 {
@@ -161,12 +161,13 @@ print ("waiting for resource propagation")
 time.sleep(5)
 pumping_station_location_model = CreatepumpingStatioLocationModel(pumping_station_model)
 time.sleep(5)
-organization_model = CreateOrganizationModel
+organization_model = CreateOrganizationModel(pumping_station_location_model)
 
 model_assets_id_list = {
                             "pumpmodelid": pump_model,
                             "pumpingstationmodelid": pumping_station_model,
-                            "pumpingstationlocationmodel": pumping_station_location_model
+                            "pumpingstationlocationmodel": pumping_station_location_model,
+                            "organizationmodelid": organization_model
                         }
 
 with open(f"{path}/asset_models/model_assets_id_list.json", 'w') as outfile:

@@ -93,8 +93,8 @@ topic = args.topic
 topic1 = "/pumpingstation/1"
 topic2 = "/pumpingstation/2"
 topic3 = "/pumpingstation/3"
-topic4 = "/pumpingstation/4"
-topic5 = "/pumpingstation/5"
+# topic4 = "/pumpingstation/4"
+# topic5 = "/pumpingstation/5"
 
 
 
@@ -732,62 +732,64 @@ while True:
         message3['pumpB']['Amperage'] = json_object_in_6["Amperage"]
         message3['pumpB']['Voltage'] = json_object_in_6["Voltage"]
         message3['pumpB']['Fan'] = json_object_in_6["Fan"]
+
+       #REMOVED for re - invent
+
+        # message4 = {'station': {},'pumpA': {}, 'pumpB' : {}}
+        # #message['message'] = args.message
+        # message4['station']['sequence'] = loopCount
+        # message4['station']['Alias'] = "/pumpingstation/004"
+        # message4['station']['Location'] = json_object_in_4["Location"]
+        # message4['station']['UUID'] = json_object_in_4["UUID"]
+        # message4['station']['Inference'] = json_object_in_4["Inference"]
         
-        message4 = {'station': {},'pumpA': {}, 'pumpB' : {}}
-        #message['message'] = args.message
-        message4['station']['sequence'] = loopCount
-        message4['station']['Alias'] = "/pumpingstation/004"
-        message4['station']['Location'] = json_object_in_4["Location"]
-        message4['station']['UUID'] = json_object_in_4["UUID"]
-        message4['station']['Inference'] = json_object_in_4["Inference"]
+        # message4['pumpA']['Temperature'] = json_object_in_7["Temperature"]
+        # message4['pumpA']['Humidity'] = json_object_in_7["Humidity"]
+        # message4['pumpA']['Pressure'] = json_object_in_7["Pressure"]
+        # message4['pumpA']['Vibration'] = json_object_in_7["Vibration"]
+        # message4['pumpA']['Flow'] = json_object_in_7["Flow"]
+        # message4['pumpA']['rpm'] = json_object_in_7["rpm"]
+        # message4['pumpA']['Amperage'] = json_object_in_7["Amperage"]
+        # message4['pumpA']['Voltage'] = json_object_in_7["Voltage"]
+        # message4['pumpA']['Fan'] = json_object_in_7["Fan"]
         
-        message4['pumpA']['Temperature'] = json_object_in_7["Temperature"]
-        message4['pumpA']['Humidity'] = json_object_in_7["Humidity"]
-        message4['pumpA']['Pressure'] = json_object_in_7["Pressure"]
-        message4['pumpA']['Vibration'] = json_object_in_7["Vibration"]
-        message4['pumpA']['Flow'] = json_object_in_7["Flow"]
-        message4['pumpA']['rpm'] = json_object_in_7["rpm"]
-        message4['pumpA']['Amperage'] = json_object_in_7["Amperage"]
-        message4['pumpA']['Voltage'] = json_object_in_7["Voltage"]
-        message4['pumpA']['Fan'] = json_object_in_7["Fan"]
+        # message4['pumpB']['Temperature'] = json_object_in_8["Temperature"]
+        # message4['pumpB']['Humidity'] = json_object_in_8["Humidity"]
+        # message4['pumpB']['Pressure'] = json_object_in_8["Pressure"]
+        # message4['pumpB']['Vibration'] = json_object_in_8["Vibration"]
+        # message4['pumpB']['Flow'] = json_object_in_8["Flow"]
+        # message4['pumpB']['rpm'] = json_object_in_8["rpm"]
+        # message4['pumpB']['Amperage'] = json_object_in_8["Amperage"]
+        # message4['pumpB']['Voltage'] = json_object_in_8["Voltage"]
+        # message4['pumpB']['Fan'] = json_object_in_8["Fan"]
         
-        message4['pumpB']['Temperature'] = json_object_in_8["Temperature"]
-        message4['pumpB']['Humidity'] = json_object_in_8["Humidity"]
-        message4['pumpB']['Pressure'] = json_object_in_8["Pressure"]
-        message4['pumpB']['Vibration'] = json_object_in_8["Vibration"]
-        message4['pumpB']['Flow'] = json_object_in_8["Flow"]
-        message4['pumpB']['rpm'] = json_object_in_8["rpm"]
-        message4['pumpB']['Amperage'] = json_object_in_8["Amperage"]
-        message4['pumpB']['Voltage'] = json_object_in_8["Voltage"]
-        message4['pumpB']['Fan'] = json_object_in_8["Fan"]
+        # message5 = {'station': {},'pumpA': {}, 'pumpB' : {}}
+        # #message['message'] = args.message
+        # message5['station']['sequence'] = loopCount
+        # message5['station']['Alias'] = "/pumpingstation/005"
+        # message5['station']['Location'] = json_object_in_5["Location"]
+        # message5['station']['UUID'] = json_object_in_5["UUID"]
+        # message5['station']['Inference'] = json_object_in_5["Inference"]
         
-        message5 = {'station': {},'pumpA': {}, 'pumpB' : {}}
-        #message['message'] = args.message
-        message5['station']['sequence'] = loopCount
-        message5['station']['Alias'] = "/pumpingstation/005"
-        message5['station']['Location'] = json_object_in_5["Location"]
-        message5['station']['UUID'] = json_object_in_5["UUID"]
-        message5['station']['Inference'] = json_object_in_5["Inference"]
+        # message5['pumpA']['Temperature'] = json_object_in_9["Temperature"]
+        # message5['pumpA']['Humidity'] = json_object_in_9["Humidity"]
+        # message5['pumpA']['Pressure'] = json_object_in_9["Pressure"]
+        # message5['pumpA']['Vibration'] = json_object_in_9["Vibration"]
+        # message5['pumpA']['Flow'] = json_object_in_9["Flow"]
+        # message5['pumpA']['rpm'] = json_object_in_9["rpm"]
+        # message5['pumpA']['Amperage'] = json_object_in_9["Amperage"]
+        # message5['pumpA']['Voltage'] = json_object_in_9["Voltage"]
+        # message5['pumpA']['Fan'] = json_object_in_9["Fan"]
         
-        message5['pumpA']['Temperature'] = json_object_in_9["Temperature"]
-        message5['pumpA']['Humidity'] = json_object_in_9["Humidity"]
-        message5['pumpA']['Pressure'] = json_object_in_9["Pressure"]
-        message5['pumpA']['Vibration'] = json_object_in_9["Vibration"]
-        message5['pumpA']['Flow'] = json_object_in_9["Flow"]
-        message5['pumpA']['rpm'] = json_object_in_9["rpm"]
-        message5['pumpA']['Amperage'] = json_object_in_9["Amperage"]
-        message5['pumpA']['Voltage'] = json_object_in_9["Voltage"]
-        message5['pumpA']['Fan'] = json_object_in_9["Fan"]
-        
-        message5['pumpB']['Temperature'] = json_object_in_10["Temperature"]
-        message5['pumpB']['Humidity'] = json_object_in_10["Humidity"]
-        message5['pumpB']['Pressure'] = json_object_in_10["Pressure"]
-        message5['pumpB']['Vibration'] = json_object_in_10["Vibration"]
-        message5['pumpB']['Flow'] = json_object_in_10["Flow"]
-        message5['pumpB']['rpm'] = json_object_in_10["rpm"]
-        message5['pumpB']['Amperage'] = json_object_in_10["Amperage"]
-        message5['pumpB']['Voltage'] = json_object_in_10["Voltage"]
-        message5['pumpB']['Fan'] = json_object_in_10["Fan"]
+        # message5['pumpB']['Temperature'] = json_object_in_10["Temperature"]
+        # message5['pumpB']['Humidity'] = json_object_in_10["Humidity"]
+        # message5['pumpB']['Pressure'] = json_object_in_10["Pressure"]
+        # message5['pumpB']['Vibration'] = json_object_in_10["Vibration"]
+        # message5['pumpB']['Flow'] = json_object_in_10["Flow"]
+        # message5['pumpB']['rpm'] = json_object_in_10["rpm"]
+        # message5['pumpB']['Amperage'] = json_object_in_10["Amperage"]
+        # message5['pumpB']['Voltage'] = json_object_in_10["Voltage"]
+        # message5['pumpB']['Fan'] = json_object_in_10["Fan"]
         
         
     #REmoved for Re-invent workshop 
@@ -840,8 +842,8 @@ while True:
         messageJson1 = json.dumps(message1)
         messageJson2 = json.dumps(message2)
         messageJson3 = json.dumps(message3)
-        messageJson4 = json.dumps(message4)
-        messageJson5 = json.dumps(message5)
+        #messageJson4 = json.dumps(message4)
+        #messageJson5 = json.dumps(message5)
         # messageJson6 = json.dumps(message6)
         # messageJson7 = json.dumps(message7)
         # messageJson8 = json.dumps(message8)
@@ -851,8 +853,8 @@ while True:
         myAWSIoTMQTTClient.publish(topic1, messageJson1, 1)
         myAWSIoTMQTTClient.publish(topic2, messageJson2, 1)
         myAWSIoTMQTTClient.publish(topic3, messageJson3, 1)
-        myAWSIoTMQTTClient.publish(topic4, messageJson4, 1)
-        myAWSIoTMQTTClient.publish(topic5, messageJson5, 1)
+        #myAWSIoTMQTTClient.publish(topic4, messageJson4, 1)
+        #myAWSIoTMQTTClient.publish(topic5, messageJson5, 1)
         # myAWSIoTMQTTClient.publish(topic6, messageJson6, 1)
         # myAWSIoTMQTTClient.publish(topic7, messageJson7, 1)
         # myAWSIoTMQTTClient.publish(topic8, messageJson8, 1)
