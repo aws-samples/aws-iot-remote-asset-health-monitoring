@@ -3,6 +3,15 @@
     "assetModelDescription": "a pump model ",
     "assetModelProperties": [
         {
+            "name": "Max_Temperature",
+            "dataType": "INTEGER",
+            "type": {
+                "attribute": {
+                    "defaultValue":"65"
+                             }
+                    }
+        },
+        {
             "name": "Temperature",
             "dataType": "INTEGER",
             "unit": "F",
@@ -76,4 +85,5 @@
         }
     ],
     "assetModelHierarchies": []
-}
+} 
+    

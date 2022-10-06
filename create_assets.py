@@ -232,7 +232,7 @@ def AssociateTimeStreamsPumpB(property_id_info_list, asset_id, number_of_messura
 # Asset creation loop *note the loop will start from 2 due to walkthrough blog
 
 number_of_messuraments = 9 #(TODO: automate that to grab number from asset model desciption)
-number_of_attributes = 0 #(TODO: automate that to grab number from asset model desciption)
+number_of_attributes = 1 #(TODO: automate that to grab number from asset model desciption)
 asset_model_id = pump_model_id
 
 #sequence FOR PUMP A pumpingstation1
