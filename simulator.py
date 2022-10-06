@@ -95,11 +95,8 @@ topic2 = "/pumpingstation/2"
 topic3 = "/pumpingstation/3"
 topic4 = "/pumpingstation/4"
 topic5 = "/pumpingstation/5"
-topic6 = "/pumpingstation/6"
-topic7 = "/pumpingstation/7"
-topic8 = "/pumpingstation/8"
-topic9 = "/pumpingstation/9"
-topic10 ="/pumpingstation/10"
+
+
 
 if args.mode not in AllowedActions:
     parser.error("Unknown --mode option %s. Must be one of %s" % (args.mode, str(AllowedActions)))
@@ -158,13 +155,13 @@ directory = "datagen"
 parent_dir =  (""+os.getcwd()+"")
 path = os.path.join(parent_dir,directory)
 
-
+#THIS FUNCTION HAS BEEN REMOVED FOR RE-INVENT WORKSHOP
 ###################################################
 #Checks if a simulation profile already exists
 profile_exists = os.path.exists(path)
 
 if profile_exists:
-    print("Your Profile is already created, please delete /datagen if you like to reconfigure")
+    print("Your Profile is already created")
     
     
     #If the profile is not present satart configuration
@@ -175,14 +172,15 @@ else:
     
     
     
+    #THIS FUNCTION HAS BEEN REMOVED FOR RE-INVENT WORKSHOP
     ####################################################
     #Creation of the simulation profile 
     #Ask about the desired simulation and creates a simulation profile 
-    print("Enter the number of machines you'd like to create (max 1000)")
-    n_machines = int(input()) 
+    #print("Enter the number of machines you'd like to create (max 1000)")
+    n_machines = 10 
     
-    print("Please select your anomaly type"+"\n"+"0 = none"+"\n"+"1 = Contextual outliers")
-    anomaly_type = int(input())
+    #print("Please select your anomaly type"+"\n"+"0 = none"+"\n"+"1 = Contextual outliers")
+    anomaly_type = 1
     
     if anomaly_type == 1:
         machine_affected = random.randint(1,n_machines)
@@ -221,7 +219,7 @@ else:
            print("{} UUID items created".format(n))
     
     
-    
+    #THIS FUNCTION HAS BEEN REMOVED FOR RE-INVENT WORKSHOP
     #####################################################
     #creates Object with list of state ( max 1000 items)
     states_object= []
@@ -649,175 +647,194 @@ while True:
         
         
         
-        message1 = {}
+        message1 = {'station': {},'pumpA': {}, 'pumpB' : {}}
         #message['message'] = args.message
-        message1['sequence'] = loopCount
-        message1['Alias'] = "/pumpingstation/001"
-        message1['Location'] = json_object_in_1["Location"]
-        message1['UUID'] = json_object_in_1["UUID"]
-        message1['Inference'] = json_object_in_1["Inference"]
-        message1['Temperature'] = json_object_in_1["Temperature"]
-        message1['Humidity'] = json_object_in_1["Humidity"]
-        message1['Pressure'] = json_object_in_1["Pressure"]
-        message1['Vibration'] = json_object_in_1["Vibration"]
-        message1['Flow'] = json_object_in_1["Flow"]
-        message1['rpm'] = json_object_in_1["rpm"]
-        message1['Amperage'] = json_object_in_1["Amperage"]
-        message1['Voltage'] = json_object_in_1["Voltage"]
-        message1['Fan'] = json_object_in_1["Fan"]
+        message1['station']['sequence'] = loopCount
+        message1['station']['Alias'] = "/pumpingstation/001"
+        message1['station']['Location'] = json_object_in_1["Location"]
+        message1['station']['UUID'] = json_object_in_1["UUID"]
+        message1['station']['Inference'] = json_object_in_1["Inference"]
         
-        message2 = {}
-        #message['message'] = args.message
-        message2['sequence'] = loopCount
-        message2['Alias'] = "/pumpingstation/002"
-        message2['Location'] = json_object_in_2["Location"]
-        message2['UUID'] = json_object_in_2["UUID"]
-        message2['Inference'] = json_object_in_2["Inference"]
-        message2['Temperature'] = json_object_in_2["Temperature"]
-        message2['Humidity'] = json_object_in_2["Humidity"]
-        message2['Pressure'] = json_object_in_2["Pressure"]
-        message2['Vibration'] = json_object_in_2["Vibration"]
-        message2['Flow'] = json_object_in_2["Flow"]
-        message2['rpm'] = json_object_in_2["rpm"]
-        message2['Amperage'] = json_object_in_2["Amperage"]
-        message2['Voltage'] = json_object_in_2["Voltage"]
-        message2['Fan'] = json_object_in_2["Fan"]
+        message1['pumpA']['Temperature'] = json_object_in_1["Temperature"]
+        message1['pumpA']['Humidity'] = json_object_in_1["Humidity"]
+        message1['pumpA']['Pressure'] = json_object_in_1["Pressure"]
+        message1['pumpA']['Vibration'] = json_object_in_1["Vibration"]
+        message1['pumpA']['Flow'] = json_object_in_1["Flow"]
+        message1['pumpA']['rpm'] = json_object_in_1["rpm"]
+        message1['pumpA']['Amperage'] = json_object_in_1["Amperage"]
+        message1['pumpA']['Voltage'] = json_object_in_1["Voltage"]
+        message1['pumpA']['Fan'] = json_object_in_1["Fan"]
         
-        message3 = {}
-        #message['message'] = args.message
-        message3['sequence'] = loopCount
-        message3['Alias'] = "/pumpingstation/003"
-        message3['Location'] = json_object_in_3["Location"]
-        message3['UUID'] = json_object_in_3["UUID"]
-        message3['Inference'] = json_object_in_3["Inference"]
-        message3['Temperature'] = json_object_in_3["Temperature"]
-        message3['Humidity'] = json_object_in_3["Humidity"]
-        message3['Pressure'] = json_object_in_3["Pressure"]
-        message3['Vibration'] = json_object_in_3["Vibration"]
-        message3['Flow'] = json_object_in_3["Flow"]
-        message3['rpm'] = json_object_in_3["rpm"]
-        message3['Amperage'] = json_object_in_3["Amperage"]
-        message3['Voltage'] = json_object_in_3["Voltage"]
-        message3['Fan'] = json_object_in_3["Fan"]
+        message1['pumpB']['Temperature'] = json_object_in_2["Temperature"]
+        message1['pumpB']['Humidity'] = json_object_in_2["Humidity"]
+        message1['pumpB']['Pressure'] = json_object_in_2["Pressure"]
+        message1['pumpB']['Vibration'] = json_object_in_2["Vibration"]
+        message1['pumpB']['Flow'] = json_object_in_2["Flow"]
+        message1['pumpB']['rpm'] = json_object_in_2["rpm"]
+        message1['pumpB']['Amperage'] = json_object_in_2["Amperage"]
+        message1['pumpB']['Voltage'] = json_object_in_2["Voltage"]
+        message1['pumpB']['Fan'] = json_object_in_2["Fan"]
         
-        message4 = {}
-        #message['message'] = args.message
-        message4['sequence'] = loopCount
-        message4['Alias'] = "/pumpingstation/004"
-        message4['Location'] = json_object_in_4["Location"]
-        message4['UUID'] = json_object_in_4["UUID"]
-        message4['Inference'] = json_object_in_4["Inference"]
-        message4['Temperature'] = json_object_in_4["Temperature"]
-        message4['Humidity'] = json_object_in_4["Humidity"]
-        message4['Pressure'] = json_object_in_4["Pressure"]
-        message4['Vibration'] = json_object_in_4["Vibration"]
-        message4['Flow'] = json_object_in_4["Flow"]
-        message4['rpm'] = json_object_in_4["rpm"]
-        message4['Amperage'] = json_object_in_4["Amperage"]
-        message4['Voltage'] = json_object_in_4["Voltage"]
-        message4['Fan'] = json_object_in_4["Fan"]
         
-        message5 = {}
+        message2 = {'station': {},'pumpA': {}, 'pumpB' : {}}
         #message['message'] = args.message
-        message5['sequence'] = loopCount
-        message5['Alias'] = "/pumpingstation/005"
-        message5['Location'] = json_object_in_5["Location"]
-        message5['UUID'] = json_object_in_5["UUID"]
-        message5['Inference'] = json_object_in_5["Inference"]
-        message5['Temperature'] = json_object_in_5["Temperature"]
-        message5['Humidity'] = json_object_in_5["Humidity"]
-        message5['Pressure'] = json_object_in_5["Pressure"]
-        message5['Vibration'] = json_object_in_5["Vibration"]
-        message5['Flow'] = json_object_in_5["Flow"]
-        message5['rpm'] = json_object_in_5["rpm"]
-        message5['Amperage'] = json_object_in_5["Amperage"]
-        message5['Voltage'] = json_object_in_5["Voltage"]
-        message5['Fan'] = json_object_in_5["Fan"]
+        message2['station']['sequence'] = loopCount
+        message2['station']['Alias'] = "/pumpingstation/002"
+        message2['station']['Location'] = json_object_in_2["Location"]
+        message2['station']['UUID'] = json_object_in_2["UUID"]
+        message2['station']['Inference'] = json_object_in_2["Inference"]
+    
+        message2['pumpA']['Temperature'] = json_object_in_3["Temperature"]
+        message2['pumpA']['Humidity'] = json_object_in_3["Humidity"]
+        message2['pumpA']['Pressure'] = json_object_in_3["Pressure"]
+        message2['pumpA']['Vibration'] = json_object_in_3["Vibration"]
+        message2['pumpA']['Flow'] = json_object_in_3["Flow"]
+        message2['pumpA']['rpm'] = json_object_in_3["rpm"]
+        message2['pumpA']['Amperage'] = json_object_in_3["Amperage"]
+        message2['pumpA']['Voltage'] = json_object_in_3["Voltage"]
+        message2['pumpA']['Fan'] = json_object_in_3["Fan"]
         
-        message6 = {}
-        #message['message'] = args.message
-        message6['sequence'] = loopCount
-        message6['Alias'] = "/pumpingstation/006"
-        message6['Location'] = json_object_in_6["Location"]
-        message6['UUID'] = json_object_in_6["UUID"]
-        message6['Inference'] = json_object_in_6["Inference"]
-        message6['Temperature'] = json_object_in_6["Temperature"]
-        message6['Humidity'] = json_object_in_6["Humidity"]
-        message6['Pressure'] = json_object_in_6["Pressure"]
-        message6['Vibration'] = json_object_in_6["Vibration"]
-        message6['Flow'] = json_object_in_6["Flow"]
-        message6['rpm'] = json_object_in_6["rpm"]
-        message6['Amperage'] = json_object_in_6["Amperage"]
-        message6['Voltage'] = json_object_in_6["Voltage"]
-        message6['Fan'] = json_object_in_6["Fan"]
+        message2['pumpB']['Temperature'] = json_object_in_4["Temperature"]
+        message2['pumpB']['Humidity'] = json_object_in_4["Humidity"]
+        message2['pumpB']['Pressure'] = json_object_in_4["Pressure"]
+        message2['pumpB']['Vibration'] = json_object_in_4["Vibration"]
+        message2['pumpB']['Flow'] = json_object_in_4["Flow"]
+        message2['pumpB']['rpm'] = json_object_in_4["rpm"]
+        message2['pumpB']['Amperage'] = json_object_in_4["Amperage"]
+        message2['pumpB']['Voltage'] = json_object_in_4["Voltage"]
+        message2['pumpB']['Fan'] = json_object_in_4["Fan"]
         
-        message7 = {}
-        #message['message'] = args.message
-        message7['sequence'] = loopCount
-        message7['Alias'] = "/pumpingstation/007"
-        message7['Location'] = json_object_in_7["Location"]
-        message7['UUID'] = json_object_in_7["UUID"]
-        message7['Inference'] = json_object_in_7["Inference"]
-        message7['Temperature'] = json_object_in_7["Temperature"]
-        message7['Humidity'] = json_object_in_7["Humidity"]
-        message7['Pressure'] = json_object_in_7["Pressure"]
-        message7['Vibration'] = json_object_in_7["Vibration"]
-        message7['Flow'] = json_object_in_7["Flow"]
-        message7['rpm'] = json_object_in_7["rpm"]
-        message7['Amperage'] = json_object_in_7["Amperage"]
-        message7['Voltage'] = json_object_in_7["Voltage"]
-        message7['Fan'] = json_object_in_7["Fan"]
         
-        message8 = {}
+        message3 = {'station': {},'pumpA': {}, 'pumpB' : {}}
         #message['message'] = args.message
-        message8['sequence'] = loopCount
-        message8['Alias'] = "/pumpingstation/008"
-        message8['Location'] = json_object_in_8["Location"]
-        message8['UUID'] = json_object_in_8["UUID"]
-        message8['Inference'] = json_object_in_8["Inference"]
-        message8['Temperature'] = json_object_in_8["Temperature"]
-        message8['Humidity'] = json_object_in_8["Humidity"]
-        message8['Pressure'] = json_object_in_8["Pressure"]
-        message8['Vibration'] = json_object_in_8["Vibration"]
-        message8['Flow'] = json_object_in_8["Flow"]
-        message8['rpm'] = json_object_in_8["rpm"]
-        message8['Amperage'] = json_object_in_8["Amperage"]
-        message8['Voltage'] = json_object_in_8["Voltage"]
-        message8['Fan'] = json_object_in_8["Fan"]
+        message3['station']['sequence'] = loopCount
+        message3['station']['Alias'] = "/pumpingstation/003"
+        message3['station']['Location'] = json_object_in_3["Location"]
+        message3['station']['UUID'] = json_object_in_3["UUID"]
+        message3['station']['Inference'] = json_object_in_3["Inference"]
         
-        message9 = {}
-        #message['message'] = args.message
-        message9['sequence'] = loopCount
-        message9['Alias'] = "/pumpingstation/009"
-        message9['Location'] = json_object_in_9["Location"]
-        message9['UUID'] = json_object_in_9["UUID"]
-        message9['Inference'] = json_object_in_9["Inference"]
-        message9['Temperature'] = json_object_in_9["Temperature"]
-        message9['Humidity'] = json_object_in_9["Humidity"]
-        message9['Pressure'] = json_object_in_9["Pressure"]
-        message9['Vibration'] = json_object_in_9["Vibration"]
-        message9['Flow'] = json_object_in_9["Flow"]
-        message9['rpm'] = json_object_in_9["rpm"]
-        message9['Amperage'] = json_object_in_9["Amperage"]
-        message9['Voltage'] = json_object_in_9["Voltage"]
-        message9['Fan'] = json_object_in_9["Fan"]
+        message3['pumpA']['Temperature'] = json_object_in_5["Temperature"]
+        message3['pumpA']['Humidity'] = json_object_in_5["Humidity"]
+        message3['pumpA']['Pressure'] = json_object_in_5["Pressure"]
+        message3['pumpA']['Vibration'] = json_object_in_5["Vibration"]
+        message3['pumpA']['Flow'] = json_object_in_5["Flow"]
+        message3['pumpA']['rpm'] = json_object_in_5["rpm"]
+        message3['pumpA']['Amperage'] = json_object_in_5["Amperage"]
+        message3['pumpA']['Voltage'] = json_object_in_5["Voltage"]
+        message3['pumpA']['Fan'] = json_object_in_5["Fan"]
         
-        message10 = {}
+        message3['pumpB']['Temperature'] = json_object_in_6["Temperature"]
+        message3['pumpB']['Humidity'] = json_object_in_6["Humidity"]
+        message3['pumpB']['Pressure'] = json_object_in_6["Pressure"]
+        message3['pumpB']['Vibration'] = json_object_in_6["Vibration"]
+        message3['pumpB']['Flow'] = json_object_in_6["Flow"]
+        message3['pumpB']['rpm'] = json_object_in_6["rpm"]
+        message3['pumpB']['Amperage'] = json_object_in_6["Amperage"]
+        message3['pumpB']['Voltage'] = json_object_in_6["Voltage"]
+        message3['pumpB']['Fan'] = json_object_in_6["Fan"]
+        
+        message4 = {'station': {},'pumpA': {}, 'pumpB' : {}}
         #message['message'] = args.message
-        message10['sequence'] = loopCount
-        message10['Alias'] = "/pumpingstation/010"
-        message10['Location'] = json_object_in_10["Location"]
-        message10['UUID'] = json_object_in_10["UUID"]
-        message10['Inference'] = json_object_in_10["Inference"]
-        message10['Temperature'] = json_object_in_10["Temperature"]
-        message10['Humidity'] = json_object_in_10["Humidity"]
-        message10['Pressure'] = json_object_in_10["Pressure"]
-        message10['Vibration'] = json_object_in_10["Vibration"]
-        message10['Flow'] = json_object_in_10["Flow"]
-        message10['rpm'] = json_object_in_10["rpm"]
-        message10['Amperage'] = json_object_in_10["Amperage"]
-        message10['Voltage'] = json_object_in_10["Voltage"]
-        message10['Fan'] = json_object_in_10["Fan"]
+        message4['station']['sequence'] = loopCount
+        message4['station']['Alias'] = "/pumpingstation/004"
+        message4['station']['Location'] = json_object_in_4["Location"]
+        message4['station']['UUID'] = json_object_in_4["UUID"]
+        message4['station']['Inference'] = json_object_in_4["Inference"]
+        
+        message4['pumpA']['Temperature'] = json_object_in_7["Temperature"]
+        message4['pumpA']['Humidity'] = json_object_in_7["Humidity"]
+        message4['pumpA']['Pressure'] = json_object_in_7["Pressure"]
+        message4['pumpA']['Vibration'] = json_object_in_7["Vibration"]
+        message4['pumpA']['Flow'] = json_object_in_7["Flow"]
+        message4['pumpA']['rpm'] = json_object_in_7["rpm"]
+        message4['pumpA']['Amperage'] = json_object_in_7["Amperage"]
+        message4['pumpA']['Voltage'] = json_object_in_7["Voltage"]
+        message4['pumpA']['Fan'] = json_object_in_7["Fan"]
+        
+        message4['pumpB']['Temperature'] = json_object_in_8["Temperature"]
+        message4['pumpB']['Humidity'] = json_object_in_8["Humidity"]
+        message4['pumpB']['Pressure'] = json_object_in_8["Pressure"]
+        message4['pumpB']['Vibration'] = json_object_in_8["Vibration"]
+        message4['pumpB']['Flow'] = json_object_in_8["Flow"]
+        message4['pumpB']['rpm'] = json_object_in_8["rpm"]
+        message4['pumpB']['Amperage'] = json_object_in_8["Amperage"]
+        message4['pumpB']['Voltage'] = json_object_in_8["Voltage"]
+        message4['pumpB']['Fan'] = json_object_in_8["Fan"]
+        
+        message5 = {'station': {},'pumpA': {}, 'pumpB' : {}}
+        #message['message'] = args.message
+        message5['station']['sequence'] = loopCount
+        message5['station']['Alias'] = "/pumpingstation/005"
+        message5['station']['Location'] = json_object_in_5["Location"]
+        message5['station']['UUID'] = json_object_in_5["UUID"]
+        message5['station']['Inference'] = json_object_in_5["Inference"]
+        
+        message5['pumpA']['Temperature'] = json_object_in_9["Temperature"]
+        message5['pumpA']['Humidity'] = json_object_in_9["Humidity"]
+        message5['pumpA']['Pressure'] = json_object_in_9["Pressure"]
+        message5['pumpA']['Vibration'] = json_object_in_9["Vibration"]
+        message5['pumpA']['Flow'] = json_object_in_9["Flow"]
+        message5['pumpA']['rpm'] = json_object_in_9["rpm"]
+        message5['pumpA']['Amperage'] = json_object_in_9["Amperage"]
+        message5['pumpA']['Voltage'] = json_object_in_9["Voltage"]
+        message5['pumpA']['Fan'] = json_object_in_9["Fan"]
+        
+        message5['pumpB']['Temperature'] = json_object_in_10["Temperature"]
+        message5['pumpB']['Humidity'] = json_object_in_10["Humidity"]
+        message5['pumpB']['Pressure'] = json_object_in_10["Pressure"]
+        message5['pumpB']['Vibration'] = json_object_in_10["Vibration"]
+        message5['pumpB']['Flow'] = json_object_in_10["Flow"]
+        message5['pumpB']['rpm'] = json_object_in_10["rpm"]
+        message5['pumpB']['Amperage'] = json_object_in_10["Amperage"]
+        message5['pumpB']['Voltage'] = json_object_in_10["Voltage"]
+        message5['pumpB']['Fan'] = json_object_in_10["Fan"]
+        
+        
+    #REmoved for Re-invent workshop 
+        # message6 = {}
+        # #message['message'] = args.message
+        # message6['sequence'] = loopCount
+        # message6['Alias'] = "/pumpingstation/006"
+        # message6['Location'] = json_object_in_6["Location"]
+        # message6['UUID'] = json_object_in_6["UUID"]
+        # message6['Inference'] = json_object_in_6["Inference"]
+        
+        
+        # message7 = {}
+        # #message['message'] = args.message
+        # message7['sequence'] = loopCount
+        # message7['Alias'] = "/pumpingstation/007"
+        # message7['Location'] = json_object_in_7["Location"]
+        # message7['UUID'] = json_object_in_7["UUID"]
+        # message7['Inference'] = json_object_in_7["Inference"]
+      
+        
+        # message8 = {}
+        # #message['message'] = args.message
+        # message8['sequence'] = loopCount
+        # message8['Alias'] = "/pumpingstation/008"
+        # message8['Location'] = json_object_in_8["Location"]
+        # message8['UUID'] = json_object_in_8["UUID"]
+        # message8['Inference'] = json_object_in_8["Inference"]
+        
+        
+        # message9 = {}
+        # #message['message'] = args.message
+        # message9['sequence'] = loopCount
+        # message9['Alias'] = "/pumpingstation/009"
+        # message9['Location'] = json_object_in_9["Location"]
+        # message9['UUID'] = json_object_in_9["UUID"]
+        # message9['Inference'] = json_object_in_9["Inference"]
+        
+        
+        # message10 = {}
+        # #message['message'] = args.message
+        # message10['sequence'] = loopCount
+        # message10['Alias'] = "/pumpingstation/010"
+        # message10['Location'] = json_object_in_10["Location"]
+        # message10['UUID'] = json_object_in_10["UUID"]
+        # message10['Inference'] = json_object_in_10["Inference"]
+        
         
         
         messageJson1 = json.dumps(message1)
@@ -825,22 +842,22 @@ while True:
         messageJson3 = json.dumps(message3)
         messageJson4 = json.dumps(message4)
         messageJson5 = json.dumps(message5)
-        messageJson6 = json.dumps(message6)
-        messageJson7 = json.dumps(message7)
-        messageJson8 = json.dumps(message8)
-        messageJson9 = json.dumps(message9)
-        messageJson10 = json.dumps(message10)
+        # messageJson6 = json.dumps(message6)
+        # messageJson7 = json.dumps(message7)
+        # messageJson8 = json.dumps(message8)
+        # messageJson9 = json.dumps(message9)
+        # messageJson10 = json.dumps(message5)
         
         myAWSIoTMQTTClient.publish(topic1, messageJson1, 1)
         myAWSIoTMQTTClient.publish(topic2, messageJson2, 1)
         myAWSIoTMQTTClient.publish(topic3, messageJson3, 1)
         myAWSIoTMQTTClient.publish(topic4, messageJson4, 1)
         myAWSIoTMQTTClient.publish(topic5, messageJson5, 1)
-        myAWSIoTMQTTClient.publish(topic6, messageJson6, 1)
-        myAWSIoTMQTTClient.publish(topic7, messageJson7, 1)
-        myAWSIoTMQTTClient.publish(topic8, messageJson8, 1)
-        myAWSIoTMQTTClient.publish(topic9, messageJson9, 1)
-        myAWSIoTMQTTClient.publish(topic10, messageJson10, 1)
+        # myAWSIoTMQTTClient.publish(topic6, messageJson6, 1)
+        # myAWSIoTMQTTClient.publish(topic7, messageJson7, 1)
+        # myAWSIoTMQTTClient.publish(topic8, messageJson8, 1)
+        # myAWSIoTMQTTClient.publish(topic9, messageJson9, 1)
+        # myAWSIoTMQTTClient.publish(topic10, messageJson10, 1)
      
         if args.mode == 'publish':
             print('Published topic %s: %s\n' % (topic1, messageJson1))

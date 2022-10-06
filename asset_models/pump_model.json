@@ -1,0 +1,79 @@
+{
+    "assetModelName": "pump",
+    "assetModelDescription": "a pump model ",
+    "assetModelProperties": [
+        {
+            "name": "Temperature",
+            "dataType": "INTEGER",
+            "unit": "F",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "Humidity",
+            "dataType": "INTEGER",
+            "unit": "%",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "Pressure",
+            "dataType": "INTEGER",
+            "unit": "PSI",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "Vibration",
+            "dataType": "INTEGER",
+            "unit": "Hz",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "Flow",
+            "dataType": "INTEGER",
+            "unit": "m3/s",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "rpm",
+            "dataType": "INTEGER",
+            "unit": "rpm",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "Voltage",
+            "dataType": "INTEGER",
+            "unit": "V",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "Amperage",
+            "dataType": "INTEGER",
+            "unit": "A",
+            "type": {
+                "measurement": {}
+            }
+        },
+        {
+            "name": "Fan",
+            "dataType": "BOOLEAN",
+            "unit": "on/off",
+            "type": {
+                "measurement": {}
+            }
+        }
+    ],
+    "assetModelHierarchies": []
+}

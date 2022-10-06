@@ -38,15 +38,15 @@ args = parser.parse_args()
 roleArn = f"{args.roleArn}"
 
 
-
-#Function for iot_core rule creation
-def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many rules you like to create 
+#Modified for re-invent workshop - locked on 5 stations
+#Function for iot_core rule creation station PumpA
+def CreateIoTRuleJSONpumpA(path, station_number, role_arn): #Inputs path and how many rules you like to create 
     
      
     n = station_number
     rule_out = {
-          "sql": f"SELECT * FROM '/pumpingstation/{n}'",
-          "description": f"Sends data to sitewise pumpingstation{n}",
+          "sql": f"SELECT pumpA FROM '/pumpingstation/{n}'",
+          "description": f"Sends data to sitewise pumpingstation{n} pumpA",
           "ruleDisabled": False,
           "awsIotSqlVersion": "2016-03-23",
           "actions": [
@@ -61,11 +61,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"Pressure\")}"
+                                                "integerValue": "${pumpA.Pressure}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Pressure"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Pressure"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -75,11 +75,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"Vibration\")}"
+                                                "integerValue": "${pumpA.Vibration}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Vibration"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Vibration"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -89,11 +89,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"Flow\")}"
+                                                "integerValue": "${pumpA.Flow}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Flow"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Flow"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -103,11 +103,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"Amperage\")}"
+                                                "integerValue": "${pumpA.Amperage}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Amperage"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Amperage"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -117,11 +117,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"Voltage\")}"
+                                                "integerValue": "${pumpA.Voltage}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Voltage"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Voltage"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -131,11 +131,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"Temperature\")}"
+                                                "integerValue": "${pumpA.Temperature}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Temperature"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Temperature"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -145,11 +145,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "booleanValue": "${get(*, \"Fan\")}"
+                                                "booleanValue": "${pumpA.Fan}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Fan"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Fan"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -159,11 +159,11 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"rpm\")}"
+                                                "integerValue": "${pumpA.rpm}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/rpm"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/rpm"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -173,11 +173,63 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "integerValue": "${get(*, \"Humidity\")}"
+                                                "integerValue": "${pumpA.Humidity}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Humidity"
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpA/Humidity"
+                                }, 
+                            ],
+                "roleArn": f"{role_arn}" 
+              }
+            }
+          ]
+        }
+        
+    ### MODIFIED FOR RE_INVENT WORKSHOP STATION NUMBERS ARE LOCKED IN 5
+    #Create profile
+    json_load = json.dumps(rule_out)
+    with open(f"{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}_pumpA.json", 'w') as outfile:
+        json.dump(rule_out, outfile)
+    
+      
+    #Checks if a JSON rule profile already exists
+    profile_exists = os.path.exists(f"{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}_pumpA.json")
+    
+    if profile_exists:
+        cmd = f"aws iot create-topic-rule --rule-name pumpingstation{n}_pumpA --topic-rule-payload file://{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}_pumpA.json"
+        create_rule = sp.getoutput(cmd)
+        
+        print(cmd)
+        print(create_rule)
+   
+        
+def CreateIoTRuleJSONpumpB(path, station_number, role_arn): #Inputs path and how many rules you like to create 
+    
+     
+    n = station_number
+    rule_out = {
+          "sql": f"SELECT pumpB FROM '/pumpingstation/{n}'",
+          "description": f"Sends data to sitewise pumpingstation{n} pumpB",
+          "ruleDisabled": False,
+          "awsIotSqlVersion": "2016-03-23",
+          "actions": [
+            {
+              "iotSiteWise": {
+                "putAssetPropertyValueEntries":[
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "integerValue": "${pumpB.Pressure}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Pressure"
                                 }, 
                                 {
                                     "propertyValues": [
@@ -187,34 +239,132 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
                                                 "offsetInNanos": "0"
                                             }, 
                                             "value": {
-                                                "stringValue": "${get(*, \"Location\")}"
+                                                "integerValue": "${pumpB.Vibration}"
                                             }
                                         }
                                     ], 
-                                    "propertyAlias": f"/pumpingstation/{n}/Location"
-                                }
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Vibration"
+                                }, 
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "integerValue": "${pumpB.Flow}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Flow"
+                                }, 
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "integerValue": "${pumpB.Amperage}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Amperage"
+                                }, 
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "integerValue": "${pumpB.Voltage}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Voltage"
+                                }, 
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "integerValue": "${pumpB.Temperature}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Temperature"
+                                }, 
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "booleanValue": "${pumpB.Fan}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Fan"
+                                }, 
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "integerValue": "${pumpB.rpm}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/rpm"
+                                }, 
+                                {
+                                    "propertyValues": [
+                                        {
+                                            "timestamp": {
+                                                "timeInSeconds": "${floor(timestamp() / 1E3)}", 
+                                                "offsetInNanos": "0"
+                                            }, 
+                                            "value": {
+                                                "integerValue": "${pumpB.Humidity}"
+                                            }
+                                        }
+                                    ], 
+                                    "propertyAlias": f"/pumpingstation/{n}/pumpB/Humidity"
+                                }, 
                             ],
                 "roleArn": f"{role_arn}" 
               }
             }
           ]
         }   
-            
+                     
         
       
     
-    
+    ### MODIFIED FOR RE_INVENT WORKSHOP STATION NUMBERS ARE LOCKED IN 5
     #Create profile
     json_load = json.dumps(rule_out)
-    with open(f"{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}.json", 'w') as outfile:
+    with open(f"{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}_pumpB.json", 'w') as outfile:
         json.dump(rule_out, outfile)
     
       
     #Checks if a JSON rule profile already exists
-    profile_exists = os.path.exists(f"{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}.json")
+    profile_exists = os.path.exists(f"{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}_pumpB.json")
     
     if profile_exists:
-        cmd = f"aws iot create-topic-rule --rule-name pumpingstation{n} --topic-rule-payload file://{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}.json"
+        cmd = f"aws iot create-topic-rule --rule-name pumpingstation{n}_pumpB --topic-rule-payload file://{path}/iot_rules/iotcore_to_sitewise_rule_pumpingstation{n}_pumpB.json"
         create_rule = sp.getoutput(cmd)
         
         print(cmd)
@@ -224,8 +374,9 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
 
         
      
-for n in range(1, 11):
-    CreateIoTRuleJSON(path, n, roleArn)
+for n in range(1, 6):
+    CreateIoTRuleJSONpumpA(path, n, roleArn)
+    CreateIoTRuleJSONpumpB(path, n, roleArn)
     
 print ("Script finished gracefully !!!")
       
