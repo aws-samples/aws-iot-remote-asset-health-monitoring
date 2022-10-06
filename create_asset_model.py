@@ -155,12 +155,13 @@ def CreateOrganizationModel(childAssetId):
  
 pump_model = CreatepumpModel()
 print ("waiting for resource propagation")
-time.sleep(5)
+time.sleep(10)
 pumping_station_model = CreatepumpingStationModel(pump_model)
 print ("waiting for resource propagation")
-time.sleep(5)
+time.sleep(10)
 pumping_station_location_model = CreatepumpingStatioLocationModel(pumping_station_model)
-time.sleep(5)
+print ("waiting for resource propagation")
+time.sleep(10)
 organization_model = CreateOrganizationModel(pumping_station_location_model)
 
 model_assets_id_list = {

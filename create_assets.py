@@ -51,8 +51,19 @@ print (f"cached id's {pump_model_id}, {pumpingstation_model_id}, {pumpingstation
 
 #create parent assets
 print("Creating parent assets")
+#Create organization first 
+create_organization_json = sp.getoutput(f"aws iotsitewise create-asset \
+        --asset-name AnyCompany \
+        --asset-model-id {organizationmodelid}")
+        
+print (create_organization_json)
 
-def CreateParentAssets(organization_model_id,location_model_id, pumping_station_id, n, state):
+print (f"Organization AnyCompany created")
+create_organization = json.loads(create_organization_json) 
+organization_id = create_organization["assetId"]
+print(f"Asset id is {organization_id}")
+
+def CreateParentAssets(organization_id, organization_model_id, location_model_id, pumping_station_id, n, state):
     
     #copy hierarchy ID
     organization_getHierarchy = sp.getoutput(f"aws iotsitewise describe-asset-model \
@@ -63,21 +74,8 @@ def CreateParentAssets(organization_model_id,location_model_id, pumping_station_
     organization_hierarchy_id = organization_getHierarchy_json["assetModelHierarchies"][0]["id"]
     print(organization_hierarchy_id)
 
-    create_organization_json = sp.getoutput(f"aws iotsitewise create-asset \
-        --asset-name AnyCompany \
-        --asset-model-id {organization_model_id}")
-        
-    print (create_organization_json)
-
-    print (f"Organization AnyCompany created")
-    create_organization = json.loads(create_organization_json) 
-    organization_id = create_organization["assetId"]
-    print(f"Asset id is {organization_id}")
-
-
-
     location_getHierarchy = sp.getoutput(f"aws iotsitewise describe-asset-model \
-        --asset-model-id {location_id}")
+        --asset-model-id {location_model_id}")
         
     print (location_getHierarchy)
     location_getHierarchy_json = json.loads(location_getHierarchy) 
@@ -103,7 +101,7 @@ def CreateParentAssets(organization_model_id,location_model_id, pumping_station_
     create_asset_location = json.loads(create_asset_location_json) 
     asset_location_id = create_asset_location["assetId"]
     print(f"Asset id is {asset_location_id}")
-    time.sleep(3)
+    time.sleep(5)
     print("waiting for asset propagation")
     
     create_asset_json = sp.getoutput(f"aws iotsitewise create-asset \
@@ -116,8 +114,15 @@ def CreateParentAssets(organization_model_id,location_model_id, pumping_station_
     create_asset = json.loads(create_asset_json) 
     pumping_asset_id = create_asset["assetId"]
     print(f"Asset id is {pumping_asset_id}")
-    time.sleep(3)
+    time.sleep(5)
     print("waiting for asset propagation")
+    
+    create_asset_association2 = sp.getoutput(f"aws iotsitewise associate-assets \
+        --asset-id {organization_id} \
+        --hierarchy-id {organization_hierarchy_id} \
+        --child-asset-id {asset_location_id}")
+    print(f"Organization and State Association created {pumping_asset_id} and {asset_location_id} !!!!!")
+    
     
     create_asset_association1 = sp.getoutput(f"aws iotsitewise associate-assets \
         --asset-id {asset_location_id} \
@@ -125,19 +130,15 @@ def CreateParentAssets(organization_model_id,location_model_id, pumping_station_
         --child-asset-id {pumping_asset_id}")
     print(f"Pumping and State Association created {pumping_asset_id} and {asset_location_id} !!!!!")
 
-    create_asset_association2 = sp.getoutput(f"aws iotsitewise associate-assets \
-        --asset-id {organization_id} \
-        --hierarchy-id {organization_hierarchy_id} \
-        --child-asset-id {asset_location_id}")
-    print(f"Organization and State Association created {pumping_asset_id} and {asset_location_id} !!!!!")
+    
 
     id_list = [pumping_asset_id, pumping_hierarchy_id]
     return (id_list)
 
 #Only creating 3 states for re-invent workshop
-pumpingStation1_ID = CreateParentAssets(organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 1, "New York" )
-pumpingStation2_ID = CreateParentAssets(organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 2, "California" )
-pumpingStation3_ID = CreateParentAssets(organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 3, "Washington" )
+pumpingStation1_ID = CreateParentAssets(organization_id, organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 1, "NewYork" )
+pumpingStation2_ID = CreateParentAssets(organization_id, organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 2, "California" )
+pumpingStation3_ID = CreateParentAssets(organization_id, organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 3, "Washington" )
 #pumpingStation4_ID = CreateParentAssets(organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 4, "New Mexico" )
 #pumpingStation5_ID = CreateParentAssets(organizationmodelid, pumpingstationlocation_model_id, pumpingstation_model_id, 5, "Florida" )
 
