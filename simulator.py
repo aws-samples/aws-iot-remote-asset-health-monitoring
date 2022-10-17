@@ -126,6 +126,7 @@ logger.addHandler(streamHandler)
 
 # Init AWSIoTMQTTClient
 myAWSIoTMQTTClient = None
+myAWSIoTMQTTClient.configureMQTTOperationTimeout = 0
 if useWebsocket:
     myAWSIoTMQTTClient = AWSIoTMQTTClient(clientId, useWebsocket=True)
     myAWSIoTMQTTClient.configureEndpoint(host, port)
@@ -863,5 +864,7 @@ while True:
      
         if args.mode == 'publish':
             print('Published topic %s: %s\n' % (topic1, messageJson1))
+        else:
+            
         loopCount += 1
     time.sleep(5)
