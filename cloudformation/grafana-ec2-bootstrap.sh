@@ -80,6 +80,7 @@ systemctl start grafana-prtfwd.service
 mkdir /var/lib/grafana/plugins
 SITEWISE_PLUGIN_VERSION=1.4.1
 grafana-cli plugins install grafana-iot-sitewise-datasource $SITEWISE_PLUGIN_VERSION
+grafana-cli plugins install grafana-iot-twinmaker-app
 
 #Create a SiteWise datasource - alternative
 #cd /home/ec2-user/$GIT_REPO_NAME
