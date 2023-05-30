@@ -355,7 +355,7 @@ for asset in assets:
             "propertyId": temperature_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -455,7 +455,7 @@ for asset in assets:
             "propertyId": fan_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -587,7 +587,7 @@ for asset in assets:
             "propertyId": humidity_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -695,7 +695,7 @@ for asset in assets:
             "propertyId": rpm_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -1138,7 +1138,7 @@ for asset in assets:
             "propertyId": flow_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -1261,7 +1261,7 @@ for asset in assets:
             "propertyId": pressure_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -1393,7 +1393,7 @@ for asset in assets:
             "propertyId": vibration_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -1659,7 +1659,7 @@ for asset in assets:
             "propertyId": voltage_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -1767,7 +1767,7 @@ for asset in assets:
             "propertyId": amperage_id,
             "queryType": "PropertyValueHistory",
             "refId": "A",
-            "region": "us-east-1",
+            "region": "us-west-2",
             "timeOrdering": "ASCENDING"
           }
         ],
@@ -1832,4 +1832,4 @@ for asset in assets:
   
     time.sleep(2)
     
-print("Script finished sucesefully, congratulations !!!")
+print("Script finished successfully, congratulations !!!")
